@@ -1,18 +1,52 @@
 import React from "react";
 
-function UseState () {
-    return (
-        <>
-        <div className='m-12'>
-                <h2 className='text-3xl font-medium'>Eliminar UseState</h2>
-                <p>Por favor, escribe el codigo de seguridad.</p>
-                        <p className='text-red-500'>Error: El codigo es incorrecto</p>
-                        <p>Cargando...</p>
-                <input type="text"
-                    placeholder='Codigo de seguridad'/>
-                <button>Comprobar</button>
-            </div>
-        </>
-    )
+const SECURITY_CODE = 'Lobo'
+
+function UseState() {
+  const [error, setError] = React.useState(false)
+  const [loading, setLoading] = React.useState(false)
+  const [value, setValue] = React.useState('')
+
+  React.useEffect(() => {
+    if (!!loading) {
+      setTimeout(() => {
+      if (value === SECURITY_CODE) {
+        setLoading(false)
+        setError(false)
+      } else {
+        setLoading(false)
+        setError(true)
+      }
+      setValue('')
+    }, 3000)
+    }
+  
+  }, [loading])
+
+  return (
+    <>
+      <div>
+        <h2>Eliminar UseState</h2>
+        <p>Por favor, escribe el codigo de seguridad.</p>
+        {
+          (error && !loading) && (
+            <p>Error: El codigo es incorrecto</p>
+          )
+        }
+        {
+          loading && (
+            <p>Cargando...</p>
+          )
+        }
+        <input type="text"
+          value={value}
+          onChange={(event) => {
+            setValue(event.target.value)
+          }}
+          placeholder='Codigo de seguridad' />
+        <button onClick={() => setLoading(true)}>Comprobar</button>
+      </div>
+    </>
+  )
 }
- export {UseState}
+export { UseState }
