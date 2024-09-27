@@ -34,36 +34,66 @@ function UseState() {
   
   }, [state.loading])
 
-  return (
+  if (!state.confirmed && !state.deleted) {
+    return (
+      <>
+        <div>
+          <h2>Eliminar UseState</h2>
+          <p>Por favor, escribe el codigo de seguridad.</p>
+          {
+            (state.error && !state.loading) && (
+              <p>Error: El codigo es incorrecto</p>
+            )
+          }
+          {
+            state.loading && (
+              <p>Cargando...</p>
+            )
+          }
+          <input type="text"
+            value={state.value}
+            onChange={(event) => {
+              setState({
+                ...state,
+                value: event.target.value
+              })
+            }}
+            placeholder='Codigo de seguridad' />
+          <button onClick={() => setState({
+            ...state,
+            loading: true,
+          })}>Comprobar</button>
+        </div>
+      </>
+    )
+  } else if (!!state.confirmed && !state.deleted){
+    return (
     <>
-      <div>
-        <h2>Eliminar UseState</h2>
-        <p>Por favor, escribe el codigo de seguridad.</p>
-        {
-          (state.error && !state.loading) && (
-            <p>Error: El codigo es incorrecto</p>
-          )
-        }
-        {
-          state.loading && (
-            <p>Cargando...</p>
-          )
-        }
-        <input type="text"
-          value={state.value}
-          onChange={(event) => {
-            setState({
-              ...state,
-              value: event.target.value
-            })
-          }}
-          placeholder='Codigo de seguridad' />
-        <button onClick={() => setState({
-          ...state,
-          loading: true,
-        })}>Comprobar</button>
-      </div>
+    <p>
+      pedimos confirmacion. ¿Esta seguro?
+    </p>
+    <button 
+      onClick={() => {
+        setState({...state, deleted: true, value: ''})
+      }}
+    >Si, Eliminar</button>
+    <button onClick={() => {
+        setState({...state, deleted: false, confirmed: false, value: ''})
+      }}>No, volver</button>
     </>
-  )
+    )
+  } else {
+    return (
+      <>
+      <p>
+        Eliminado con exito
+      </p>
+      <button onClick={() => {
+        setState({...state, deleted: false, confirmed: false, value: ''})
+      }}>Recuperar useState</button>
+      </>
+      )
+  }
+  
 }
 export { UseState }
