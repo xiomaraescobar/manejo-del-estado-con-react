@@ -7,7 +7,7 @@ class ClassState extends React.Component {
     constructor(props) {
       super(props)
       this.state = {
-        error: false,
+        error: false, //variables de estado
         loading: false,
         value: ''
       }
