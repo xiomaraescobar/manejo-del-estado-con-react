@@ -9,7 +9,7 @@ function UseState() {
     error: false,
     loading: false,
     deleted: false,
-    completed: false,
+    confirmed: false,
   })
 
    const onConfirm = () => {
