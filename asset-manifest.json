@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.f855e6bc.css",
-    "main.js": "/static/js/main.c6610beb.js",
-    "index.html": "/index.html",
-    "main.f855e6bc.css.map": "/static/css/main.f855e6bc.css.map",
-    "main.c6610beb.js.map": "/static/js/main.c6610beb.js.map"
+    "main.css": "/manejo-del-estado-con-react/static/css/main.f855e6bc.css",
+    "main.js": "/manejo-del-estado-con-react/static/js/main.c6610beb.js",
+    "index.html": "/manejo-del-estado-con-react/index.html",
+    "main.f855e6bc.css.map": "/manejo-del-estado-con-react/static/css/main.f855e6bc.css.map",
+    "main.c6610beb.js.map": "/manejo-del-estado-con-react/static/js/main.c6610beb.js.map"
   },
   "entrypoints": [
     "static/css/main.f855e6bc.css",
